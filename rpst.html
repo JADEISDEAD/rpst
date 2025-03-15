@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors Therapy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .container {
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .choices {
+      margin-bottom: 20px;
+    }
+
+    .choice {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .choice:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      margin-top: 20px;
+    }
+
+    #resultText {
+      font-size: 18px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Rock Paper Scissors Therapy</h1>
+    <div class="choices">
+      <button class="choice" onclick="playGame('rock')">Rock</button>
+      <button class="choice" onclick="playGame('paper')">Paper</button>
+      <button class="choice" onclick="playGame('scissors')">Scissors</button>
+    </div>
+    <div class="result">
+      <p id="resultText"></p>
+    </div>
+  </div>
+
+  <script>
+    // Array of possible choices
+    const choices = ['rock', 'paper', 'scissors'];
+
+    // Function to play the game
+    function playGame(userChoice) {
+      // Randomly select the computer's choice
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+      // Determine the result of the game
+      const result = getResult(userChoice, computerChoice);
+
+      // Show the result text
+      document.getElementById('resultText').innerText = result;
+    }
+
+    // Function to determine the result of the game
+    function getResult(userChoice, computerChoice) {
+      // Determine win/lose/draw outcome
+      if (userChoice === computerChoice) {
+        return "You both chose " + userChoice + ". It’s a draw! Remember, sometimes in life, you just have to accept things as they are.";
+      }
+
+      if (
+        (userChoice === 'rock' && computerChoice === 'scissors') ||
+        (userChoice === 'scissors' && computerChoice === 'paper') ||
+        (userChoice === 'paper' && computerChoice === 'rock')
+      ) {
+        return "You chose " + userChoice + " and the computer chose " + computerChoice + ". You win! This reflects your inner confidence, take pride in your victories.";
+      } else {
+        return "You chose " + userChoice + " and the computer chose " + computerChoice + ". You lose, but remember: failure is just a lesson in disguise. Embrace it!";
+      }
+    }
+  </script>
+</body>
+</html>
